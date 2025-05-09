@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nginx Demo Page</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #0099cc;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Main content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Features section */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature {
+            flex: 1 1 300px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            color: #0099cc;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #0099cc;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0077aa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Nginx</h1>
+        <p>A high-performance web server and reverse proxy</p>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <h2>Simple, Fast, and Reliable</h2>
+            <p>Nginx is used by some of the largest websites on the internet to deliver content quickly and efficiently. This demo page is being served by Nginx to showcase its capabilities.</p>
+            <a href="https://nginx.org" class="btn">Learn More About Nginx</a>
+        </section>
+        
+        <section class="features">
+            <div class="feature">
+                <img src="./images/performance.jpg" alt="Performance">
+		<h3>High Performance</h3>
+                <p>Nginx is known for its stability, rich feature set, simple configuration, and low resource consumption.</p>
+            </div>
+            
+            <div class="feature">
+                <img src="./images/scalability.jpg" alt="Scalability">
+		<h3>Scalability</h3>
+                <p>Designed to handle thousands of connections simultaneously with minimal memory usage.</p>
+            </div>
+            
+            <div class="feature">
+                <img src="./images/proxy.jpg" alt="Proxy">
+                <h3>Reverse Proxy</h3>
+                <p>Nginx can act as a reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols.</p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Nginx Demo Page &copy; 2023 | Served with ❤️ by Nginx</p>
+    </footer>
+</body>
+</html>
+
+
+
