@@ -2,58 +2,49 @@ version: '3.8'
 
 services:
   app1:
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    build: .
     environment:
       - APP_NAME=App1
-      - NODE_ENV=production
+    expose:
+      - "3000"
+    networks:
+      - app-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 256M
+      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
   app2:
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    build: .
     environment:
       - APP_NAME=App2
-      - NODE_ENV=production
+    expose:
+      - "3000"
+    networks:
+      - app-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 256M
+      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
   app3:
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    build: .
     environment:
       - APP_NAME=App3
-      - NODE_ENV=production
+    expose:
+      - "3000"
+    networks:
+      - app-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 256M
+      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
   nginx:
     image: nginx:alpine
@@ -61,13 +52,16 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./images:/usr/share/nginx/images:ro
     depends_on:
-      - app1
-      - app2
-      - app3
-    deploy:
-      resources:
-        limits:
-          cpus: '0.25'
-          memory: 128M
+      app1:
+        condition: service_started
+      app2:
+        condition: service_started
+      app3:
+        condition: service_started
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
